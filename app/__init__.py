@@ -8,5 +8,6 @@ def create_app():
     # set up configuration for the app here
     app.config['DEBUG'] = True
     app.register_blueprint(controllers.index_bp)
+    app.register_blueprint(controllers.products_bp)
 
     return app
