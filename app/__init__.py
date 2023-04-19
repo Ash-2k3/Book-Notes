@@ -12,5 +12,8 @@ def create_app():
     app.config['DEBUG'] = True
     app.register_blueprint(controllers.index_bp)
     app.register_blueprint(controllers.products_bp)
+    app.register_blueprint(controllers.search_book_bp)
+    app.register_blueprint(controllers.store_data_bp)
+    app.register_blueprint(controllers.create_book_bp)
 
     return app

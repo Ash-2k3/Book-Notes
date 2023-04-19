@@ -10,7 +10,7 @@ function fetchData(){
 
 function saveBookInDb(bookName){
          return new Promise((resolve, reject) => {
-                  fetch('/save-book-info')
+                  fetch('/create-book')
                   
          })
 }
