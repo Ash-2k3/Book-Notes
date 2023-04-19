@@ -8,14 +8,19 @@ function fetchData(){
          })
 }
 
+function saveBookInDb(bookName){
+         return new Promise((resolve, reject) => {
+                  fetch('/save-book-info')
+                  
+         })
+}
+
 function addBook(){
          const bookNameTextField = document.querySelector('.book-input-form');
          const bookName = bookNameTextField.value;
          const newListElement = document.createElement("li");
          const newTextNode = document.createTextNode(bookName);
-         newListElement.append(newTextNode);
-         listOfBooks.append(newListElement)
-         console.log("hii",bookName);
+        
 }
 
 listOfBooks = document.querySelector('.books-list')
