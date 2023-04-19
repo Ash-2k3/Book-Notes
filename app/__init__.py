@@ -4,6 +4,7 @@ from app import controllers
 
 def create_app():
     app = Flask(__name__)
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
     # set up configuration for the app here
     app.config['DEBUG'] = True
