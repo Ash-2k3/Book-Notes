@@ -1,8 +1,8 @@
-from ast import Pass
-from crypt import methods
+from flask import request
 from flask import jsonify
 from flask import Blueprint, render_template
 from app.models import BookEntity
+import json
 
 index_bp = Blueprint('index', __name__)
 products_bp = Blueprint('products', __name__)
@@ -26,4 +26,10 @@ def get_books():
 
 @create_book_bp.route('/create-book', methods=['POST'])
 def create_books():
-         Pass
+         book_name = request.json.get('book_name')
+
+         if not book_name:
+                  return
+         book = BookEntity(book_name = book_name)
+         book.save_book_info()
+         return jsonify({'message': 'Book created successfully'}), 201

@@ -8,11 +8,26 @@ function fetchData(){
          })
 }
 
-function saveBookInDb(bookName){
+function createBookInDb(bookName){
          return new Promise((resolve, reject) => {
-                  fetch('/create-book')
-                  
-         })
+                  fetch('/create-book', {
+                           method: 'POST',
+                           headers: {
+                                    'Content-Type': 'application/json'
+                           },
+                           body: JSON.stringify({
+                                    'book_name': bookName
+                           })
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                           resolve(data);
+                           console.log("Saved in db", data)
+                  })
+                  .catch(error => {
+                           reject(error);
+                  });
+         });
 }
 
 function addBook(){
@@ -20,7 +35,7 @@ function addBook(){
          const bookName = bookNameTextField.value;
          const newListElement = document.createElement("li");
          const newTextNode = document.createTextNode(bookName);
-        
+         createBookInDb(bookName);
 }
 
 listOfBooks = document.querySelector('.books-list')
