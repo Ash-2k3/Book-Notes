@@ -1,4 +1,4 @@
-function fetchData(){
+function fetchBooksList(){
          return new Promise((resolve, reject) => {
                   fetch('/products')
                   .then(response => response.text())
@@ -8,7 +8,7 @@ function fetchData(){
          })
 }
 
-function createBookInDb(bookName){
+function createBookInstance(bookName){
          return new Promise((resolve, reject) => {
                   fetch('/create-book', {
                            method: 'POST',
