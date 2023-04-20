@@ -6,19 +6,19 @@ import json
 
 index_bp = Blueprint('index', __name__)
 get_books_bp = Blueprint('get_books',__name__ )
-create_book_bp = Blueprint('create_book', __name__)
+create_book_bp = Blueprint('create_books', __name__)
 
 @index_bp.route('/')
 def index():
          # Render the index.html (landing page)
          return render_template('index.html')
 
-@get_books_bp.route('/save-book-info')
+@get_books_bp.route('/get-books')
 def get_books():
          # Get list of existing books from db
          books = BookEntity.get_list_of_books()
          book_dict = [{'book_name': book.book_name} for book in books]
-         return jsonify(book_dict,200)
+         return jsonify(book_dict), 200
 
 @create_book_bp.route('/create-book', methods=['POST'])
 def create_books():
