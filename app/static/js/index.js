@@ -59,17 +59,56 @@ function addBook() {
   createBookInstance(bookName);
 }
 
-function populateUI(book_lists) {
+async function populateUI() {
+  await fetchBooksList()
   for (const book of book_lists) {
-    const newListElement = document.createElement("li");
-    newListElement.textContent = book.book_name
-    listOfBooks.append(newListElement)
+         const card = document.createElement("div");
+         card.classList.add("card", "mb-3");
+ 
+         const row = document.createElement("div");
+         row.classList.add("row", "g-0");
+ 
+         const colImg = document.createElement("div");
+         colImg.classList.add("col-md-4");
+ 
+         const img = document.createElement("img");
+         img.classList.add("img-fluid", "rounded-start");
+         // img.setAttribute("src", book.image_url);
+         // img.setAttribute("alt", book.title);
+ 
+         const colBody = document.createElement("div");
+         colBody.classList.add("col-md-8");
+ 
+         const cardBody = document.createElement("div");
+         cardBody.classList.add("card-body");
+ 
+         const title = document.createElement("h5");
+         title.classList.add("card-title");
+         title.textContent = book.bookName;
+ 
+         const description = document.createElement("p");
+         description.classList.add("card-text");
+         description.textContent = book.bookName;
+ 
+         const timestamp = document.createElement("p");
+         timestamp.classList.add("card-text");
+         const timestampText = document.createElement("small");
+         timestampText.classList.add("text-muted");
+         timestampText.textContent = `Last updated ago`;
+         timestamp.append(timestampText);
+ 
+         colImg.append(img);
+         colBody.append(cardBody);
+         cardBody.append(title, description, timestamp);
+         row.append(colImg, colBody);
+         card.append(row);
+ 
+         listOfBooks.append(card);
   }
 }
 
 // Initialization Code
-setTimeout(fetchBooksList, 1);
-setTimeout(() => populateUI(book_lists), 5000);
+window.onload = populateUI()
 
 // Event Listeners
 const addBtn = document.querySelector('.add-book');
