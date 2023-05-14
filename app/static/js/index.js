@@ -49,6 +49,12 @@ function createBookInstance(bookName) {
   });
 }
 
+function getRelatedBookInfo(){
+  return new Promise((resolve,reject) => {
+    fetch('/search-book-info')
+  })
+}
+
 async function addBook() {
   const bookNameTextField = document.querySelector('.book-input-form');
   const bookName = bookNameTextField.value;
