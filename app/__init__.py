@@ -21,5 +21,6 @@ def create_app():
     app.register_blueprint(controllers.index_bp)
     app.register_blueprint(controllers.get_books_bp)
     app.register_blueprint(controllers.create_book_bp)
+    app.register_blueprint(controllers.search_book_bp)
 
     return app

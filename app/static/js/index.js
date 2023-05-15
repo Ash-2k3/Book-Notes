@@ -52,7 +52,17 @@ function createBookInstance(bookName) {
 function getRelatedBookInfo(){
   return new Promise((resolve,reject) => {
     fetch('/search-book-info')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      resolve(data)
+    })
+    .catch(error => {
+      console.error('Error', error);
+      reject(error);
+    })
   })
+  
 }
 
 async function addBook() {
@@ -64,6 +74,8 @@ async function addBook() {
 }
 
 async function populateUI() {
+  console.log('Hi Mike testing desu')
+  getRelatedBookInfo()
   listOfBooks.innerHTML = "";
   let book_lists = await fetchBooksList();
   console.log(listOfBooks);
