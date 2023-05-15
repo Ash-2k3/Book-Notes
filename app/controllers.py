@@ -1,8 +1,11 @@
 from ast import Pass
+import re
 from flask import request
 from flask import jsonify
 from flask import Blueprint, render_template
 from app.models import BookEntity
+from config import BOOK_API_KEY
+import requests
 import json
 
 index_bp = Blueprint('index', __name__)
@@ -36,4 +39,14 @@ def create_books():
 
 @get_related_books_from_books_api.route('/search-book-info')
 def search_book():
-         Pass
+         search_params = {
+                  'q': 'flowers',
+                  'key': str(BOOK_API_KEY)
+         }
+         response = requests.get(url='https://www.googleapis.com/books/v1/volumes', params=search_params)
+
+         if response.status_code == 200:
+                  data = response.json()
+                  return data
+         else:
+                  return 'Error: {}'.format(response.status_code)
