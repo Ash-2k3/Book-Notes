@@ -41,7 +41,8 @@ def create_books():
 def search_book():
          search_params = {
                   'q': 'flowers',
-                  'key': BOOK_API_KEY
+                  'key': BOOK_API_KEY,
+                  'maxResults': '3'
          }
          response = requests.get(url='https://www.googleapis.com/books/v1/volumes', params=search_params)
 
