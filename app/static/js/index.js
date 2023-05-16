@@ -54,7 +54,10 @@ function getRelatedBookInfo(){
     fetch('/search-book-info')
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      const responseBooks = data.items
+      for(let i = 0; i<responseBooks.length; i++){
+        console.log(responseBooks[i].volumeInfo.authors);
+      }
       resolve(data)
     })
     .catch(error => {
@@ -126,6 +129,9 @@ async function populateUI() {
     listOfBooks.append(card);
   }
 }
+
+
+
 
 // Initialization Code
 window.onload = populateUI()
