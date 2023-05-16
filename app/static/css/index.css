@@ -1,0 +1,11 @@
+div.search-results {
+         /* display: block; */
+         background-color: antiquewhite;
+         padding: 5px;
+}
+
+div.search-results li{
+         list-style: none;
+         border: rgb(231, 211, 184) solid 0.5px;
+         margin: 1px;
+}
