@@ -1,10 +1,27 @@
-div.search-results {
-         /* display: block; */
-         background-color: antiquewhite;
-         padding: 5px;
+* {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
 }
 
-div.search-results li{
+.books-list {
+         z-index: 0;
+}
+ 
+.search-box {
+         position: relative;
+}
+
+.search-results ul {
+         background-color: antiquewhite;
+         display: none;
+         padding: 5px;
+         position: absolute;
+         width: 90%;
+         z-index: 50000;
+}
+
+.search-results li{
          list-style: none;
          border: rgb(231, 211, 184) solid 0.5px;
          margin: 1px;
