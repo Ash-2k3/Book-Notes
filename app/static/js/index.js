@@ -64,6 +64,25 @@ function getRelatedBookInfo() {
           const pageCount = responseBooks[i].volumeInfo.pageCount
           const bookTitle = responseBooks[i].volumeInfo.title
           const bookSubTitle = responseBooks[i].volumeInfo.subtitle
+
+          const suggestionImg = document.createElement("img");
+          suggestionImg.setAttribute("src", bookThumbnail);
+          
+          const suggestionDescription = document.createElement("span");
+          suggestionDescription.innerText = description;
+
+          const suggestionTitle = document.createElement("h3");
+          suggestionTitle.innerText = bookTitle;
+
+          const suggestionSubTitle = document.createElement("h5");
+          suggestionSubTitle.innerText = bookSubTitle;
+
+          const suggestionContainer = document.createElement("li");
+          suggestionContainer.append(suggestionImg, suggestionDescription, suggestionTitle, suggestionSubTitle);
+
+          // console.log(suggestionContainer);
+          searchResultBox.append(suggestionContainer)
+
         }
         resolve(data)
       })
