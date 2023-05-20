@@ -148,7 +148,14 @@ const addBtn = document.querySelector('.add-book');
 addBtn.addEventListener('click', addBook);
 
 const searchBar = document.querySelector('.book-search-bar')
-console.log(searchBar);
+var searchResultBox = document.querySelector('div.search-results ul');
+
 searchBar.addEventListener('input', (event) => {
   console.log(searchBar.value);
+  if (searchBar.value.length >= 3) {
+    console.log(searchResultBox.style.display);
+    searchResultBox.style.display = 'block';
+  } else {
+    searchResultBox.style.display = 'none';
+  }
 });
