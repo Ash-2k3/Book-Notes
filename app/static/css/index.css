@@ -16,8 +16,8 @@
          background-color: antiquewhite;
          display: none;
          padding: 5px;
-         position: absolute;
-         width: 90%;
+         position: absolute; 
+         min-width: 90%;
          z-index: 50000;
 }
 
