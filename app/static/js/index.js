@@ -49,30 +49,30 @@ function createBookInstance(bookName) {
   });
 }
 
-function getRelatedBookInfo(){
-  return new Promise((resolve,reject) => {
+function getRelatedBookInfo() {
+  return new Promise((resolve, reject) => {
     fetch('/search-book-info')
-    .then(response => response.json())
-    .then(data => {
-      const responseBooks = data.items
-      console.log(data);
-      for(let i = 0; i<responseBooks.length; i++){
-        console.log(responseBooks[i].volumeInfo.subtitle);
-        const authors = responseBooks[i].volumeInfo.authors[0];
-        const description = responseBooks[i].volumeInfo.description
-        const bookThumbnail = responseBooks[i].volumeInfo.imageLinks.smallThumbnail
-        const pageCount =  responseBooks[i].volumeInfo.pageCount
-        const bookTitle = responseBooks[i].volumeInfo.title
-        const bookSubTitle = responseBooks[i].volumeInfo.subtitle
-      }
-      resolve(data)
-    })
-    .catch(error => {
-      console.error('Error', error);
-      reject(error);
-    })
+      .then(response => response.json())
+      .then(data => {
+        const responseBooks = data.items
+        console.log(data);
+        for (let i = 0; i < responseBooks.length; i++) {
+          console.log(responseBooks[i].volumeInfo.subtitle);
+          const authors = responseBooks[i].volumeInfo.authors[0];
+          const description = responseBooks[i].volumeInfo.description
+          const bookThumbnail = responseBooks[i].volumeInfo.imageLinks.smallThumbnail
+          const pageCount = responseBooks[i].volumeInfo.pageCount
+          const bookTitle = responseBooks[i].volumeInfo.title
+          const bookSubTitle = responseBooks[i].volumeInfo.subtitle
+        }
+        resolve(data)
+      })
+      .catch(error => {
+        console.error('Error', error);
+        reject(error);
+      })
   })
-  
+
 }
 
 async function addBook() {
@@ -146,3 +146,9 @@ window.onload = populateUI()
 // Event Listeners
 const addBtn = document.querySelector('.add-book');
 addBtn.addEventListener('click', addBook);
+
+const searchBar = document.querySelector('.book-search-bar')
+console.log(searchBar);
+searchBar.addEventListener('input', (event) => {
+  console.log(searchBar.value);
+});
